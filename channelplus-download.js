@@ -9,6 +9,18 @@
 // @grant        GM_notification
 // ==/UserScript==
 
+function formatDate(date) {
+    let yy = date.getFullYear().toString().substr(2);
+    let mm = ('0' + (date.getMonth() + 1).toString()).slice(-2);
+    let dd = ('0' + date.getDate().toString()).slice(-2);
+
+    return yy + mm + dd;
+}
+
+function pad(num) {
+    return ('0' + num).slice(-2);
+}
+
 GM_registerMenuCommand('Download images', function() { // eslint-disable-line no-undef
     'use strict';
     let raw = document.getElementsByTagName('pre')[0].textContent;
@@ -48,15 +60,3 @@ GM_registerMenuCommand('Download images', function() { // eslint-disable-line no
 
     GM_notification('started ' + toDownload + ' downloads'); // eslint-disable-line no-undef
 }, 'r');
-
-function formatDate(date) {
-    let yy = date.getFullYear().toString().substr(2);
-    let mm = ('0' + (date.getMonth() + 1).toString()).slice(-2);
-    let dd = ('0' + date.getDate().toString()).slice(-2);
-
-    return yy + mm + dd;
-}
-
-function pad(num) {
-    return ('0' + num).slice(-2);
-}
