@@ -9,14 +9,14 @@
 // @grant        GM_notification
 // ==/UserScript==
 
-GM_registerMenuCommand('Download images', function() {
+GM_registerMenuCommand('Download images', function() { // eslint-disable-line no-undef
     'use strict';
     let raw = document.getElementsByTagName('pre')[0].textContent;
     let data;
     try {
         data = JSON.parse(raw);
     } catch (e) {
-        GM_notification('Failed to parse JSON');
+        GM_notification('Failed to parse JSON'); // eslint-disable-line no-undef
         return;
     }
 
@@ -42,11 +42,11 @@ GM_registerMenuCommand('Download images', function() {
             }
 
             lastDate = date;
-            GM_download(photos[key].url, fileName);
+            GM_download(photos[key].url, fileName); // eslint-disable-line no-undef
         }
     }
 
-    GM_notification('started ' + toDownload + ' downloads');
+    GM_notification('started ' + toDownload + ' downloads'); // eslint-disable-line no-undef
 }, 'r');
 
 function formatDate(date) {
